@@ -1,0 +1,44 @@
+﻿<Window x:Class="WpfApp_ScrollableTabs_StackOverflow.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp_ScrollableTabs_StackOverflow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <TabControl SelectionChanged="TabControl_SelectionChanged">
+            <TabControl.Template>
+                <ControlTemplate TargetType="TabControl">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <ScrollViewer 
+            HorizontalScrollBarVisibility="Disabled"  
+            VerticalScrollBarVisibility="Auto" 
+            FlowDirection="RightToLeft">
+                            <TabPanel 
+                    x:Name="HeaderPanel"
+                    Panel.ZIndex ="0" 
+                    KeyboardNavigation.TabIndex="1"
+                    IsItemsHost="true"
+                />
+                        </ScrollViewer>
+                        <ContentPresenter 
+            x:Name="PART_SelectedContentHost"
+            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+            ContentSource="SelectedContent" Grid.Column="1"
+        />
+                    </Grid>
+                </ControlTemplate>
+            </TabControl.Template>
+            <!-- Your Tabitems-->
+            <TabItem Header="header1">text</TabItem>
+            <TabItem Header="header1">text</TabItem>
+            <TabItem Header="header1">text</TabItem>
+            <TabItem Header="header1">text</TabItem>
+        </TabControl>
+    </Grid>
+</Window>
